@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pici AI — AI Photo Editor | Pixip</title>
+<meta name="description" content="Pici AI Photo Editor — Face Swap, Hairstyle Changer, Cartoon Effects, Background Removal and 15+ AI tools. Transform any photo with one tap.">
+<meta property="og:title" content="Pici AI — AI Photo Editor">
+<meta property="og:description" content="Transform any photo with AI. Face Swap, Hairstyle Changer, Cartoon Effects and more.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pixip.tech/pici">
+<link rel="icon" type="image/png" href="../pici-logo.png">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--bg:#09090B;--surface:#18181B;--surface2:#27272A;--border:#27272A;--purple:#8B5CF6;--blue:#3B82F6;--pink:#EC4899;--cyan:#06B6D4;--green:#10B981;--gold:#F59E0B;--text:#FAFAFA;--text2:#A1A1AA;--text3:#71717A;--gradient:linear-gradient(135deg,#8B5CF6,#3B82F6)}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+
+  .glow{position:fixed;top:-300px;left:50%;transform:translateX(-50%);width:1000px;height:1000px;background:radial-gradient(circle,rgba(139,92,246,0.1),rgba(59,130,246,0.05) 40%,transparent 60%);pointer-events:none;z-index:0}
+
+  /* Nav */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;backdrop-filter:blur(16px);background:rgba(9,9,11,0.8);border-bottom:1px solid var(--border)}
+  .nav-inner{max-width:1100px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+  .logo{font-size:22px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .nav-links{display:flex;gap:24px;align-items:center}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--text2);transition:color .2s}
+  .nav-links a:hover{color:var(--text)}
+  .nav-download{padding:8px 18px;background:var(--gradient);color:white;border-radius:10px;font-size:13px;font-weight:600;transition:opacity .2s}
+  .nav-download:hover{opacity:0.9}
+
+  /* Hero */
+  .hero{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:140px 24px 60px;display:flex;align-items:center;gap:60px}
+  .hero-text{flex:1}
+  .hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(139,92,246,0.12);border:1px solid rgba(139,92,246,0.2);color:var(--purple);font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;margin-bottom:20px}
+  .hero h1{font-size:clamp(32px,5vw,52px);font-weight:800;line-height:1.12;letter-spacing:-1px}
+  .hero h1 span{background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .hero p{font-size:17px;color:var(--text2);margin-top:16px;line-height:1.6;max-width:460px}
+  .hero-buttons{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap}
+  .btn-store{display:inline-flex;align-items:center;gap:10px;padding:14px 24px;border-radius:14px;font-size:14px;font-weight:600;transition:transform .2s,opacity .2s}
+  .btn-store:hover{transform:translateY(-2px)}
+  .btn-apple{background:white;color:#000}
+  .btn-google{background:var(--surface);border:1px solid var(--border);color:var(--text)}
+  .btn-store svg{width:22px;height:22px}
+  .hero-mockup{flex:0 0 auto;position:relative;display:flex;gap:16px;align-items:flex-start}
+  .screenshot{width:220px;border-radius:24px;box-shadow:0 40px 80px rgba(0,0,0,0.4);border:2px solid var(--border)}
+  .screenshot:nth-child(2){margin-top:40px}
+
+  /* Features */
+  .features{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:80px 24px}
+  .section-label{font-size:12px;font-weight:600;color:var(--purple);text-transform:uppercase;letter-spacing:2px;text-align:center}
+  .section-title{font-size:clamp(26px,4vw,40px);font-weight:800;text-align:center;margin-top:12px;letter-spacing:-0.5px}
+  .section-sub{font-size:15px;color:var(--text2);text-align:center;margin-top:8px;max-width:500px;margin-left:auto;margin-right:auto}
+  .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:48px}
+  .feature{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:24px;transition:border-color .2s}
+  .feature:hover{border-color:var(--purple)}
+  .feature-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:14px}
+  .feature h3{font-size:15px;font-weight:700;margin-bottom:6px}
+  .feature p{font-size:13px;color:var(--text2);line-height:1.5}
+
+  /* Pricing */
+  .pricing{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:80px 24px}
+  .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:48px}
+  .plan{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px;position:relative}
+  .plan.popular{border-color:var(--purple);box-shadow:0 0 40px rgba(139,92,246,0.15)}
+  .plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gradient);color:white;font-size:11px;font-weight:700;padding:4px 14px;border-radius:10px}
+  .plan-name{font-size:18px;font-weight:700;margin-top:4px}
+  .plan-price{font-size:32px;font-weight:800;margin-top:8px}
+  .plan-price span{font-size:14px;font-weight:500;color:var(--text3)}
+  .plan-features{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:8px}
+  .plan-features li{font-size:13px;color:var(--text2);display:flex;align-items:center;gap:8px}
+  .plan-features li::before{content:"";display:inline-block;width:16px;height:16px;border-radius:50%;background:rgba(16,185,129,0.15);flex-shrink:0}
+
+  /* CTA */
+  .cta{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:80px 24px;text-align:center}
+  .cta-box{background:linear-gradient(135deg,rgba(139,92,246,0.15),rgba(59,130,246,0.1));border:1px solid rgba(139,92,246,0.2);border-radius:24px;padding:60px 32px}
+  .cta-box h2{font-size:clamp(24px,4vw,36px);font-weight:800}
+  .cta-box p{font-size:15px;color:var(--text2);margin-top:12px;max-width:420px;margin-left:auto;margin-right:auto}
+  .cta-buttons{display:flex;gap:12px;justify-content:center;margin-top:28px;flex-wrap:wrap}
+
+  /* Footer */
+  footer{border-top:1px solid var(--border);padding:40px 24px;text-align:center}
+  .footer-inner{max-width:1100px;margin:0 auto}
+  .footer-brand{font-size:18px;font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .footer-text{font-size:13px;color:var(--text3);margin-top:8px}
+  .footer-links{display:flex;gap:24px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+  .footer-links a{font-size:13px;color:var(--text2);transition:color .2s}
+  .footer-links a:hover{color:var(--text)}
+
+  @media(max-width:768px){
+    .hero{flex-direction:column;text-align:center;padding-top:120px}
+    .hero p{margin-left:auto;margin-right:auto}
+    .hero-buttons{justify-content:center}
+    .hero-mockup{flex:none;justify-content:center}
+    .screenshot{width:180px}
+    .features-grid{grid-template-columns:1fr 1fr}
+    .pricing-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:500px){
+    .features-grid{grid-template-columns:1fr}
+    .nav-links a:first-child{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="glow"></div>
+
+<nav>
+  <div class="nav-inner">
+    <a href="../" class="logo">Pixip</a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#download" class="nav-download">Download</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">&#x2728; AI Photo Editor</div>
+    <h1>Transform any photo with <span>AI magic</span></h1>
+    <p>Face Swap, Hairstyle Changer, Cartoon Effects, Background Removal and 15+ AI tools. One tap to create stunning edits.</p>
+    <div class="hero-buttons">
+      <a href="https://apps.apple.com/app/pici-ai-photo-editor/id6752544538" class="btn-store btn-apple">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        App Store
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.mobinest.pici" class="btn-store btn-google">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 23.67c-.38-.21-.68-.59-.68-1.1V1.43c0-.51.3-.9.68-1.1l11.48 11.67L3.18 23.67zm1.4.73l12.9-7.43-2.76-2.81L4.58 24.4zm12.9-16.97L4.58-.4l10.14 10.24 2.76-2.81zm1.82 1.05l-3.47 2 3.06 3.11 4.11-2.36c.75-.43.75-1.13 0-1.56l-3.7-1.19z"/></svg>
+        Google Play
+      </a>
+    </div>
+  </div>
+  <div class="hero-mockup">
+    <img src="./screenshot-1.png" alt="Pici AI - Trending AI Styles" class="screenshot">
+    <img src="./screenshot-2.png" alt="Pici AI - Outfit Change" class="screenshot">
+  </div>
+</section>
+
+<!-- Features -->
+<section class="features" id="features">
+  <div class="section-label">Features</div>
+  <div class="section-title">Everything you need to edit photos</div>
+  <div class="section-sub">Powerful AI tools that used to require hours of professional editing — now just one tap.</div>
+
+  <div class="features-grid">
+    <div class="feature">
+      <div class="feature-icon" style="background:rgba(139,92,246,0.15)">&#x1F3AD;</div>
+      <h3>Face Swap</h3>
+      <p>Swap faces between two photos with realistic AI blending.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon" style="background:rgba(59,130,246,0.15)">&#x1F487;</div>
+      <h3>Hairstyle Changer</h3>
+      <p>Try different hairstyles on your selfies before visiting the salon.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon" style="background:rgba(236,72,153,0.15)">&#x1F3A8;</div>
+      <h3>Cartoon &amp; Painting</h3>
+      <p>Turn any photo into cartoon, anime, oil painting and more art styles.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon" style="background:rgba(6,182,212,0.15)">&#x2728;</div>
+      <h3>AI Enhance</h3>
+      <p>One-tap enhancement: auto-levels, color correction, and sharpening.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon" style="background:rgba(16,185,129,0.15)">&#x1F5BC;</div>
+      <h3>Background Removal</h3>
+      <p>Remove or replace backgrounds instantly with AI precision.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon" style="background:rgba(245,158,11,0.15)">&#x1F50D;</div>
+      <h3>HD Upscale</h3>
+      <p>Upscale low-resolution photos to crisp HD quality.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon" style="background:rgba(239,68,68,0.15)">&#x1F476;</div>
+      <h3>Baby Face</h3>
+      <p>See what you or your friends would look like as a baby.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon" style="background:rgba(139,92,246,0.15)">&#x1F504;</div>
+      <h3>Gender Swap</h3>
+      <p>AI-powered gender transformation for fun and creative content.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon" style="background:rgba(59,130,246,0.15)">&#x1F9F9;</div>
+      <h3>Object Removal</h3>
+      <p>Remove unwanted objects from any photo seamlessly.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon" style="background:rgba(6,182,212,0.15)">&#x1F58C;</div>
+      <h3>Photo Editor</h3>
+      <p>Full editor with 20+ tools: crop, filters, text, stickers, brush and more.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon" style="background:rgba(236,72,153,0.15)">&#x1F527;</div>
+      <h3>Photo Restore</h3>
+      <p>Bring old, damaged photos back to life with AI restoration.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon" style="background:rgba(16,185,129,0.15)">&#x1F308;</div>
+      <h3>Colorize</h3>
+      <p>Add natural colors to black and white photos automatically.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- CTA -->
+<section class="cta" id="download">
+  <div class="cta-box">
+    <h2>Ready to transform your photos?</h2>
+    <p>Download Pici AI for free and start creating stunning edits in seconds.</p>
+    <div class="cta-buttons">
+      <a href="https://apps.apple.com/app/pici-ai-photo-editor/id6752544538" class="btn-store btn-apple">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        App Store
+      </a>
+      <a href="https://play.google.com/store/apps/details?id=com.mobinest.pici" class="btn-store btn-google">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px"><path d="M3.18 23.67c-.38-.21-.68-.59-.68-1.1V1.43c0-.51.3-.9.68-1.1l11.48 11.67L3.18 23.67zm1.4.73l12.9-7.43-2.76-2.81L4.58 24.4zm12.9-16.97L4.58-.4l10.14 10.24 2.76-2.81zm1.82 1.05l-3.47 2 3.06 3.11 4.11-2.36c.75-.43.75-1.13 0-1.56l-3.7-1.19z"/></svg>
+        Google Play
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">Pixip</div>
+    <div class="footer-text">&copy; 2026 Pixip. All rights reserved.</div>
+    <div class="footer-links">
+      <a href="https://ilyas-savli.github.io/apps-privacy-policy/pici/index.html">Privacy Policy</a>
+      <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/">Terms of Use</a>
+      <a href="https://www.tiktok.com/@pici.ai" style="display:inline-flex;align-items:center;gap:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.52a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.34-6.34V8.76a8.18 8.18 0 004.76 1.52V6.83a4.85 4.85 0 01-1-.14z"/></svg> TikTok</a>
+      <a href="https://www.instagram.com/pici.ai" style="display:inline-flex;align-items:center;gap:4px"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg> Instagram</a>
+      <a href="../">Pixip Home</a>
+      <a href="mailto:pixip@pixip.tech">Contact</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
