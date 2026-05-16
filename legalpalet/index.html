@@ -380,19 +380,6 @@
 </div>
 <script src="assets/js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-  new Swiper('.product-swiper', {
-    slidesPerView: 2,
-    spaceBetween: 16,
-    loop: true,
-    autoplay: { delay: 5000, disableOnInteraction: false },
-    pagination: { el: '.swiper-pagination', clickable: true },
-    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-    breakpoints: {
-      640: { slidesPerView: 4 },
-      1024: { slidesPerView: 6 }
-    }
-  });
-</script>
+<script>document.addEventListener('DOMContentLoaded',function(){new Swiper('.product-swiper',{slidesPerView:2,spaceBetween:16,loop:true,autoplay:{delay:3000,disableOnInteraction:false,stopOnLastSlide:false},speed:600,pagination:{el:'.swiper-pagination',clickable:true},navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'},breakpoints:{640:{slidesPerView:4},1024:{slidesPerView:5}}})});</script>
 </body>
 </html>
