@@ -44,6 +44,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -132,6 +133,25 @@
         <h1 class="hero-title">AHŞAP PALET ALIM - SATIMI<br>İkinci El Ahşap Palet Çözümleri</h1>
         <p class="hero-desc">Sıfır ve ikinci el ahşap paletleriniz adresinizden alınır ve tüm palet ihtiyacınız adresinize teslim edilir.</p>
         <a href="iletisim.html" class="btn">İletişime Geç</a>
+      </div>
+    </section>
+
+    <!-- PRODUCT SLIDER -->
+    <section class="product-slider-section">
+      <div class="wrapper">
+        <div class="swiper product-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="assets/images/ikinci-el-palet-nedir-1-removebg-preview.png" alt="İkinci El Palet"></div>
+            <div class="swiper-slide"><img src="assets/images/images-removebg-preview.png" alt="Ahşap Palet"></div>
+            <div class="swiper-slide"><img src="assets/images/konya-ikinci-el-palet-removebg-preview-300x240.png" alt="Konya İkinci El Palet"></div>
+            <div class="swiper-slide"><img src="assets/images/services_banner_2255129358-removebg-preview-300x200.png" alt="Palet Hizmet"></div>
+            <div class="swiper-slide"><img src="assets/images/ikinci-el-palet-fiyatlari-izmir-removebg-preview-300x246.png" alt="İkinci El Palet Fiyatları"></div>
+            <div class="swiper-slide"><img src="assets/images/unnamed-removebg-preview-300x183.png" alt="Palet"></div>
+          </div>
+          <div class="swiper-button-next"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-pagination"></div>
+        </div>
       </div>
     </section>
 
@@ -359,5 +379,20 @@
 
 </div>
 <script src="assets/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+  new Swiper('.product-swiper', {
+    slidesPerView: 2,
+    spaceBetween: 16,
+    loop: true,
+    autoplay: { delay: 5000, disableOnInteraction: false },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    breakpoints: {
+      640: { slidesPerView: 4 },
+      1024: { slidesPerView: 6 }
+    }
+  });
+</script>
 </body>
 </html>
