@@ -111,8 +111,8 @@
         <h2 style="text-align: center; color: #3498db; margin-top: 0;">Pici AI - Photo Beautifier &amp; Style Transform</h2>
 
         <div class="highlight">
-            <strong>Effective Date:</strong> March 15, 2026<br>
-            <strong>Last Updated:</strong> March 15, 2026
+            <strong>Effective Date:</strong> October 22, 2026<br>
+            <strong>Last Updated:</strong> October 22, 2026
         </div>
 
         <p>At <span class="app-name">Pici AI</span>, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our mobile application and related services.</p>
@@ -153,19 +153,20 @@
 
         <div class="highlight">
             <h3>Important: Third-Party AI Service</h3>
-            <p>To provide AI-powered photo beautification, style transformation, background removal, and other image editing features, your photos are sent to <strong>LightX Editor, operated by Andor AI Tools</strong> (<a href="https://www.lightxeditor.com" target="_blank">lightxeditor.com</a>). This is a third-party AI service.</p>
-            <p><strong>What data is sent:</strong> The photo or image you select or capture within the app.</p>
-            <p><strong>Who it is sent to:</strong> LightX Editor / Andor AI Tools, via their API at <code>api.lightxeditor.com</code>.</p>
-            <p><strong>Purpose:</strong> Solely to perform the AI image processing operation you requested (e.g., beautification, background removal, AI filter, face swap, portrait enhancement, outfit try-on).</p>
-            <p>By using any AI feature in this app, you consent to your image being transmitted to LightX Editor for processing. Please review their privacy policy at <a href="https://www.lightxeditor.com/privacy-policy" target="_blank">lightxeditor.com/privacy-policy</a>.</p>
+            <p>To provide AI photo enhancement, restoration, style transformation, face effects and other AI features, the photo you choose is sent from the app to our server (Google Cloud Functions, operated by Google LLC) and from there to <strong>AILabTools</strong> (<a href="https://www.ailabtools.com" target="_blank">ailabtools.com</a>), a third-party AI image processing service. The app asks for your consent before the first photo is sent, and sends nothing if you decline.</p>
+            <p><strong>What data is sent:</strong> The photo or photos you choose for the feature (for Face Swap, both photos), and the options you pick (for example a style or a hairstyle).</p>
+            <p><strong>Who it is sent to:</strong> AILabTools, via its API at <code>ailabapi.com</code>.</p>
+            <p><strong>Purpose:</strong> Solely to perform the AI operation you requested and return the result to you.</p>
+            <p>Please review AILabTools' privacy policy on <a href="https://www.ailabtools.com" target="_blank">ailabtools.com</a>.</p>
         </div>
 
         <h3>Additional details about photo processing:</h3>
         <ul>
-            <li><strong>Temporary Storage:</strong> Your image is temporarily uploaded to secure cloud storage (Amazon S3 via a pre-signed URL) solely to facilitate processing by the AI service</li>
-            <li><strong>Automatic Deletion:</strong> Processed images are automatically deleted from our servers within 30 days unless you explicitly save them to your account</li>
-            <li><strong>No Human Review:</strong> Your photos are processed automatically by AI; no human employees view your personal images</li>
-            <li><strong>No AI Training:</strong> Your photos are not used to train any AI models</li>
+            <li><strong>No storage on our server:</strong> Your photo passes through our server on its way to AILabTools; we do not keep a copy of it</li>
+            <li><strong>Results you save:</strong> Results you save to Pici are stored in your account's cloud storage (Google Firebase) until you delete them or delete your account</li>
+            <li><strong>Results you download:</strong> Downloads are saved to your device's gallery and stay under your control</li>
+            <li><strong>No Human Review:</strong> Your photos are processed automatically; our team does not view your personal images</li>
+            <li><strong>No AI Training:</strong> We do not use your photos to train AI models</li>
         </ul>
 
         <h2>4. Advertising and Tracking</h2>
@@ -187,13 +188,13 @@
 
         <h3>5.1 Third-Party Service Providers</h3>
         <ul>
-            <li><strong>LightX Editor / Andor AI Tools</strong> — AI image processing (see Section 3). Privacy policy: <a href="https://www.lightxeditor.com/privacy-policy" target="_blank">lightxeditor.com/privacy-policy</a></li>
-            <li><strong>Google Firebase (Google LLC)</strong> — Authentication (Firebase Auth), database (Firestore), cloud storage, app performance monitoring (Firebase Crashlytics), remote configuration (Firebase Remote Config), and analytics (Firebase Analytics). Privacy policy: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
+            <li><strong>AILabTools</strong> — AI image processing (see Section 3). Website: <a href="https://www.ailabtools.com" target="_blank">ailabtools.com</a></li>
+                <li><strong>RevenueCat, Inc.</strong> — Manages subscriptions and credit pack purchases: it receives your purchase receipts and your account's user ID to tell the app which plan you have. It does not receive your payment card details. Privacy policy: <a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></li>
+            <li><strong>Google Firebase (Google LLC)</strong> — Authentication (Firebase Auth), database (Firestore), cloud storage, app performance monitoring (Firebase Crashlytics), remote configuration (Firebase Remote Config), push notifications (Firebase Cloud Messaging), analytics (Firebase Analytics), and the server functions that forward photos for AI processing (Cloud Functions). Privacy policy: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
             <li><strong>Google AdMob (Google LLC)</strong> — In-app advertising. Privacy policy: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
             <li><strong>Google Sign-In (Google LLC)</strong> — Optional authentication method. Privacy policy: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
             <li><strong>Apple Inc.</strong> — In-app purchases and subscriptions on iOS are processed by Apple via the App Store. Privacy policy: <a href="https://www.apple.com/legal/privacy/" target="_blank">apple.com/legal/privacy</a></li>
             <li><strong>Google Play (Google LLC)</strong> — In-app purchases and subscriptions on Android are processed by Google via Google Play. Privacy policy: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
-            <li><strong>Amazon Web Services (AWS)</strong> — Temporary cloud storage used for image upload during AI processing. Privacy policy: <a href="https://aws.amazon.com/privacy/" target="_blank">aws.amazon.com/privacy</a></li>
         </ul>
 
         <p>Each of these third-party providers has their own privacy policy and provides the same or equivalent level of data protection as required by applicable law.</p>
@@ -214,7 +215,7 @@
         <ul>
             <li><strong>Encryption:</strong> Data is encrypted in transit (HTTPS/TLS) and at rest using industry-standard protocols</li>
             <li><strong>Access Controls:</strong> Strict access controls limit who can access your data</li>
-            <li><strong>Secure Infrastructure:</strong> Use of secure cloud infrastructure (Google Firebase, AWS) with enterprise-grade security</li>
+            <li><strong>Secure Infrastructure:</strong> Use of secure cloud infrastructure (Google Firebase) with enterprise-grade security</li>
             <li><strong>Crash Monitoring:</strong> Firebase Crashlytics is used to detect and fix app crashes to maintain stability and security</li>
         </ul>
 
@@ -223,7 +224,7 @@
         <h3>7.1 Access and Control</h3>
         <ul>
             <li><strong>Account Access:</strong> View and update your account information at any time within the app</li>
-            <li><strong>Data Deletion:</strong> Request deletion of your account and associated data by contacting us at pixip@pixip.tech</li>
+            <li><strong>Data Deletion:</strong> Delete your account in the app at any time (Profile &rarr; Delete Account): your account, profile and saved results are erased. You can also request deletion by contacting us at pixip@pixip.tech</li>
             <li><strong>Opt-out of Tracking (iOS):</strong> You can change your ATT tracking permission at any time in iOS Settings &gt; Privacy &amp; Security &gt; Tracking</li>
             <li><strong>Opt-out of Personalized Ads (Android):</strong> Go to Google Settings &gt; Ads &gt; Opt out of Ads Personalization</li>
             <li><strong>Opt-out of Communications:</strong> Unsubscribe from promotional emails using the link in the email</li>
@@ -238,8 +239,7 @@
         </ul>
 
         <h2>8. In-App Purchases and Subscriptions</h2>
-
-        <p>Pici AI offers optional subscription plans (monthly and annual). Subscription purchases are processed entirely by Apple (App Store) or Google (Google Play). We do not collect or store your payment card information. We receive only a confirmation of the purchase and your subscription status from the respective platform. Subscription management and cancellation are handled through your App Store or Google Play account settings.</p>
+        <p>Pici AI offers optional subscription plans (weekly, monthly and annual) and one-time credit packs. Purchases are processed entirely by Google (Google Play) or Apple (App Store), and managed through RevenueCat (see Section 5.1). We do not collect or store your payment card information. We receive only a confirmation of the purchase and your subscription status. Subscription management and cancellation are handled through your Google Play or App Store account settings.</p>
 
         <h2>9. Children's Privacy</h2>
 
@@ -247,13 +247,13 @@
 
         <h2>10. International Data Transfers</h2>
 
-        <p>Your information may be transferred to and processed in countries other than your country of residence, including the United States, where our service providers (Google, AWS, LightX Editor) operate. We ensure that such transfers comply with applicable data protection laws and that our service providers implement appropriate safeguards.</p>
+        <p>Your information may be transferred to and processed in countries other than your country of residence, including the United States, where our service providers (Google, RevenueCat, AILabTools) operate. We ensure that such transfers comply with applicable data protection laws and that our service providers implement appropriate safeguards.</p>
 
         <h2>11. Data Retention</h2>
 
         <ul>
             <li><strong>Account Data:</strong> Retained for as long as your account is active, or until you request deletion</li>
-            <li><strong>Photos:</strong> Automatically deleted from our servers within 30 days unless saved to your account</li>
+            <li><strong>Photos:</strong> Not kept on our server after processing; results you save to Pici are kept until you delete them or your account</li>
             <li><strong>Analytics Data:</strong> Retained for up to 2 years for app improvement purposes</li>
             <li><strong>Legal Requirements:</strong> Some data may be retained longer if required by law</li>
         </ul>
@@ -284,7 +284,7 @@
         <p>This Privacy Policy is governed by and construed in accordance with the laws of <strong>Türkiye</strong>, without regard to its conflict of law principles.</p>
 
         <div class="last-updated">
-            <p><em>This Privacy Policy was last updated on March 15, 2026</em></p>
+            <p><em>This Privacy Policy was last updated on October 22, 2026</em></p>
             <p><strong>Pici AI - Photo Beautifier &amp; Style Transform</strong></p>
         </div>
     </div>
