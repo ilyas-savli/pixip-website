@@ -112,7 +112,7 @@
 
         <div class="highlight">
             <strong>Yürürlük Tarihi:</strong> 26 Ekim 2026<br>
-            <strong>Son Güncelleme:</strong> 28 Ekim 2026
+            <strong>Son Güncelleme:</strong> 9 Kasım 2026
         </div>
 
         <div class="warning">
@@ -125,7 +125,8 @@
 
         <h3>1.1 Sizin Verdiğiniz Bilgiler</h3>
         <ul>
-            <li><strong>Hesap Bilgileri:</strong> Hesap oluşturduğunuzda e-posta adresinizi, kullanıcı adınızı ve kimlik doğrulama bilgilerinizi toplarız</li>
+            <li><strong>Misafir Hesabı:</strong> Uygulamayı ilk açtığınızda sizin için otomatik olarak bir misafir hesabı oluşturulur (Firebase Anonymous Authentication). Rastgele bir kullanıcı kimliği vardır; ad veya e-posta adresi içermez. Düzenlemeleriniz, kredileriniz ve kaydettiğiniz sonuçlar bu hesaba aittir</li>
+            <li><strong>Google Hesabı (isteğe bağlı):</strong> Google ile giriş yapmayı seçerseniz Google'dan adınızı, e-posta adresinizi ve profil fotoğrafınızı alırız ve misafir hesabınız Google hesabınız olur (bkz. Bölüm 7.1)</li>
             <li><strong>Profil Bilgileri:</strong> Ad ve tercihler gibi isteğe bağlı profil bilgileri</li>
             <li><strong>Fotoğraflar ve Görseller:</strong> Yapay zeka ile işleme, düzenleme ve dönüştürme için uygulamada yüklediğiniz veya çektiğiniz görseller</li>
             <li><strong>Kullanıcı İçeriği:</strong> Uygulamada oluşturduğunuz, paylaştığınız veya sakladığınız her türlü içerik</li>
@@ -136,7 +137,16 @@
             <li><strong>Cihaz Bilgileri:</strong> Cihaz türü, işletim sistemi, benzersiz cihaz tanımlayıcıları, mobil ağ bilgileri</li>
             <li><strong>Kullanım Verileri:</strong> Uygulama kullanım alışkanlıkları, kullanılan özellikler, uygulamada geçirilen süre ve çökme raporları</li>
             <li><strong>Analiz Verileri:</strong> Uygulamayı geliştirmek için Firebase Analytics aracılığıyla toplanan performans ölçümleri ve etkileşim verileri</li>
-            <li><strong>Reklam Kimliği (IDFA/GAID):</strong> İzninizle (iOS'ta Uygulama İzleme Şeffaflığı istemiyle, Android'de cihaz ayarlarınıza göre) kişiselleştirilmiş reklam göstermek için reklam kimliğinizi toplayabiliriz. Bu izni istediğiniz zaman cihaz ayarlarından geri alabilirsiniz</li>
+            <li><strong>Reklam Kimliği (IDFA/GAID):</strong> Ödüllü bir reklam izlemeyi seçtiğinizde (Bölüm 4) Google AdMob, onayınıza ve cihaz ayarlarınıza bağlı olarak reklam kimliğinizi kullanabilir. Bu izni istediğiniz zaman cihaz ayarlarından veya uygulamadan (Profil &rarr; Reklam tercihleri, varsa) geri alabilirsiniz</li>
+            <li><strong>Cihaz Kontrolü:</strong> Telefonunuzun Android kimliğinin tek yönlü bir özeti (SHA-256); yalnızca her telefonun ücretsiz yapay zeka düzenlemesini bir kez alması için sunucumuza gönderilir (örneğin çıkış yapıp tekrar giriş yapmak bu hakkı yenilemez). Özet tekrar kimliğe çevrilemez, reklam için kullanılmaz ve paylaşılmaz</li>
+            <li><strong>Bildirim Jetonu:</strong> Arka planda düzenlenmeye bıraktığınız fotoğraf hazır olduğunda size haber verebilmemiz ve bildirimlere izin verirseniz uygulama haberleri gönderebilmemiz için bir anlık bildirim jetonu (Firebase Cloud Messaging)</li>
+        </ul>
+
+        <h3>1.3 Yalnızca Cihazınızda İşlenenler</h3>
+        <ul>
+            <li><strong>Önerilen fotoğraflar:</strong> Fotoğraf seçicide içinde insan olan fotoğrafları önermek için uygulama en son 300 fotoğrafınızda yüz arar. Bu tamamen telefonunuzda çalışır (Google MediaPipe); fotoğraflar ve sonuçlar hiçbir yere gönderilmez ve tarafımızca saklanmaz</li>
+            <li><strong>Kişi ve arka plan:</strong> Arka plan gücü ayarı, kişiyi arka plandan telefonunuzda ayırır. Ayırma modeli Google'ın sunucularından bir kez indirilir; bu indirmeyle fotoğrafınız gönderilmez</li>
+            <li><strong>Kolajlar ve dönüşüm videoları:</strong> Önce/sonra kolajları ve kısa dönüşüm videoları telefonunuzda hazırlanır ve yalnızca siz seçtiğinizde paylaşılır veya kaydedilir</li>
         </ul>
 
         <h2>2. Bilgilerinizi Nasıl Kullanırız</h2>
@@ -146,7 +156,7 @@
             <li><strong>Hizmetin Sunulması:</strong> Yapay zeka destekli fotoğraf düzenleme, güzelleştirme ve stil dönüştürme hizmetlerini sunmak</li>
             <li><strong>Hesap Yönetimi:</strong> Kullanıcı hesabınızı oluşturmak, yönetmek ve kimliğinizi doğrulamak</li>
             <li><strong>Uygulamanın Geliştirilmesi:</strong> Özellikleri ve kullanıcı deneyimini geliştirmek için kullanım alışkanlıklarını analiz etmek</li>
-            <li><strong>Reklam:</strong> Uygulama içinde reklam göstermek. Onayınız varsa reklam kimliğinize göre kişiselleştirilmiş reklam gösterebiliriz; onay yoksa yalnızca kişiselleştirilmemiş reklam gösterilir</li>
+            <li><strong>Reklam:</strong> Ücretsiz bir yapay zeka düzenlemesi kazanmak için izlemeyi seçtiğiniz isteğe bağlı ödüllü video reklamlar göstermek. Onayınız varsa bu reklamlar reklam kimliğinize göre kişiselleştirilebilir; onay yoksa yalnızca kişiselleştirilmemiş reklam gösterilir</li>
             <li><strong>Müşteri Desteği:</strong> Taleplerinize ve sorularınıza yanıt vermek, teknik destek sağlamak</li>
             <li><strong>Güvenlik:</strong> Teknik sorunları, çökmeleri (Firebase Crashlytics ile) ve dolandırıcılığı tespit etmek, önlemek ve gidermek</li>
             <li><strong>İletişim:</strong> Önemli güncellemeler, güvenlik uyarıları ve (onayınızla) tanıtım içerikleri göndermek</li>
@@ -159,7 +169,7 @@
             <h3>Önemli: Üçüncü Taraf Yapay Zeka Hizmeti</h3>
             <p>Yapay zeka ile fotoğraf iyileştirme, restorasyon, stil dönüştürme, yüz efektleri ve diğer yapay zeka özelliklerini sunmak için seçtiğiniz fotoğraf uygulamadan sunucumuza (Google LLC tarafından işletilen Google Cloud Functions) ve oradan üçüncü taraf bir yapay zeka görüntü işleme hizmeti olan <strong>fal.ai</strong>'ye (Features &amp; Labels Inc., Amerika Birleşik Devletleri, <a href="https://fal.ai" target="_blank">fal.ai</a>) gönderilir. Uygulama, ilk fotoğraf gönderilmeden önce onayınızı ister; onay vermezseniz hiçbir şey gönderilmez.</p>
             <p><strong>Hangi veriler gönderilir:</strong> Özellik için seçtiğiniz fotoğraf veya fotoğraflar (Yüz Değiştirme için iki fotoğraf) ve seçtiğiniz seçenekler (örneğin bir stil veya saç modeli).</p>
-            <p><strong>Kime gönderilir:</strong> <code>fal.run</code> API'si üzerinden fal.ai'ye. Ekim 2026'dan beri tek yapay zeka sağlayıcımız fal.ai'dir; önceki sağlayıcımız AILabTools artık fotoğraf almamaktadır. fal.ai'den isteği fotoğrafınızla birlikte saklamamasını istiyoruz; düzenlenen sonuç, uygulamanın indirebilmesi için fal.ai sunucularında yalnızca kısa bir süre tutulur.</p>
+            <p><strong>Kime gönderilir:</strong> <code>fal.run</code> API'si üzerinden fal.ai'ye. fal.ai'den isteği fotoğrafınızla birlikte saklamamasını istiyoruz; düzenlenen sonuç, uygulamanın indirebilmesi için fal.ai sunucularında yalnızca kısa bir süre tutulur.</p>
             <p><strong>Amaç:</strong> Yalnızca istediğiniz yapay zeka işlemini yapmak ve sonucu size iletmek.</p>
             <p>fal.ai'nin gizlilik politikasını inceleyebilirsiniz: <a href="https://fal.ai/legal/privacy-policy" target="_blank">fal.ai/legal/privacy-policy</a>.</p>
         </div>
@@ -168,6 +178,7 @@
         <ul>
             <li><strong>Sunucumuzda saklanmaz:</strong> Fotoğrafınız fal.ai'ye giderken sunucumuzdan geçer; bir kopyasını saklamayız</li>
             <li><strong>Kaydettiğiniz sonuçlar:</strong> Pici'ye kaydettiğiniz sonuçlar, siz silene veya hesabınızı silene kadar hesabınızın bulut depolamasında (Google Firebase) saklanır</li>
+            <li><strong>Tamamlanmamış düzenlemeler:</strong> Düzenleme sırasında uygulama kapanırsa (veya düzenleme sürerken gezinmeye devam ederseniz) sonucu kaybetmemeniz için sonuç en fazla 24 saat hesabınızın bulut depolamasında tutulur ve sonra otomatik olarak silinir</li>
             <li><strong>İndirdiğiniz sonuçlar:</strong> İndirilen sonuçlar cihazınızın galerisine kaydedilir ve sizin kontrolünüzdedir</li>
             <li><strong>İnsan incelemesi yok:</strong> Fotoğraflarınız otomatik olarak işlenir; ekibimiz kişisel görsellerinizi görmez</li>
             <li><strong>Yapay zeka eğitimi yok:</strong> Fotoğraflarınızı yapay zeka modellerini eğitmek için kullanmayız</li>
@@ -176,12 +187,14 @@
         <h2>4. Reklam ve İzleme</h2>
 
         <div class="warning">
-            <p><strong>Android için Pici, 2.0.1 sürümünden itibaren reklam göstermez.</strong> Uygulamanın eski sürümleri <strong>Google AdMob</strong> (Google LLC) tarafından sağlanan reklamlar gösterir. İlgili reklamları göstermek için Google AdMob reklam kimliğinizi (iOS'ta IDFA, Android'de GAID) ve diğer cihaz bilgilerini toplayıp kullanabilir.</p>
+            <p><strong>Pici yalnızca isteğe bağlı ödüllü video reklamlar gösterir</strong>; bu reklamları <strong>Google AdMob</strong> (Google LLC) sağlar: ücretsiz düzenlemeniz veya krediniz kalmadıysa, ücretsiz bir yapay zeka düzenlemesi kazanmak için reklam izlemeyi seçebilirsiniz (bir düzenleme için kaç reklam gerektiği uygulamada gösterilir). Pici banner, açılır pencere veya uygulama açılış reklamı göstermez; Pro abonelere reklam gösterilmez.</p>
         </div>
 
         <ul>
-            <li><strong>iOS'ta:</strong> Reklam kimliğiniz toplanmadan önce uygulama, izninizi isteyen bir Uygulama İzleme Şeffaflığı (ATT) istemi gösterir. İzin verirseniz kişiselleştirilmiş reklamlar gösterilebilir. İzin vermezseniz yalnızca kişiselleştirilmemiş reklamlar gösterilir ve IDFA'nız reklam hedeflemesi için kullanılmaz</li>
-            <li><strong>Android'de:</strong> Kişiselleştirilmiş reklamları cihazınızın Google ayarlarından kapatabilirsiniz</li>
+            <li><strong>Onay (AEA, Birleşik Krallık ve İsviçre):</strong> Herhangi bir reklam gösterilmeden önce Google'ın onay formu reklamların kişiselleştirilip kişiselleştirilemeyeceğini sorar. Seçiminizi istediğiniz zaman uygulamadan değiştirebilirsiniz (Profil &rarr; Reklam tercihleri)</li>
+            <li><strong>Ödül kontrolü:</strong> Bir reklamı izlemeyi bitirdiğinizde Google, ücretsiz düzenlemeyi hesabınıza ekleyebilmemiz için sunucumuza Pici kullanıcı kimliğinizi bildirir. AdMob'dan başka kişisel veri almayız</li>
+            <li><strong>iOS'ta:</strong> Reklam kimliğiniz toplanmadan önce uygulama, izninizi isteyen bir Uygulama İzleme Şeffaflığı (ATT) istemi gösterir. İzin vermezseniz yalnızca kişiselleştirilmemiş reklamlar gösterilir ve IDFA'nız reklam hedeflemesi için kullanılmaz</li>
+            <li><strong>Android'de:</strong> Kişiselleştirilmiş reklamları cihazınızın Google ayarlarından kapatabilir veya reklam kimliğinizi silebilirsiniz</li>
             <li><strong>AdMob'un topladıkları:</strong> Reklam sunmak ve ölçmek amacıyla reklam kimliği, IP adresi, cihaz bilgileri ve uygulama kullanım verileri</li>
             <li>Google'ın veri uygulamalarını <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a>, Google AdMob politikalarını <a href="https://support.google.com/admob/answer/6128543" target="_blank">support.google.com/admob</a> adresinde inceleyebilirsiniz</li>
         </ul>
@@ -194,8 +207,8 @@
         <ul>
             <li><strong>fal.ai (Features &amp; Labels Inc.)</strong> — Yapay zeka ile görüntü işleme (bkz. Bölüm 3). Gizlilik politikası: <a href="https://fal.ai/legal/privacy-policy" target="_blank">fal.ai/legal/privacy-policy</a></li>
             <li><strong>RevenueCat, Inc.</strong> — Abonelikleri ve kredi paketi satın alımlarını yönetir: uygulamaya hangi plana sahip olduğunuzu bildirmek için satın alma makbuzlarınızı ve hesabınızın kullanıcı kimliğini alır. Ödeme kartı bilgilerinizi almaz. Gizlilik politikası: <a href="https://www.revenuecat.com/privacy" target="_blank">revenuecat.com/privacy</a></li>
-            <li><strong>Google Firebase (Google LLC)</strong> — Kimlik doğrulama (Firebase Auth), veritabanı (Firestore), bulut depolama, uygulama performansı izleme (Firebase Crashlytics), uzaktan yapılandırma (Firebase Remote Config), anlık bildirimler (Firebase Cloud Messaging), analiz (Firebase Analytics) ve fotoğrafları yapay zeka işlemesine ileten sunucu işlevleri (Cloud Functions). Gizlilik politikası: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
-            <li><strong>Google AdMob (Google LLC)</strong> — Uygulamanın eski sürümlerinde uygulama içi reklam (Android için Pici 2.0.1 ve sonrasında yok). Gizlilik politikası: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
+            <li><strong>Google Firebase (Google LLC)</strong> — Kimlik doğrulama (misafir hesaplar dahil Firebase Auth), veritabanı (Firestore), bulut depolama, uygulama performansı izleme (Firebase Crashlytics), uzaktan yapılandırma (Firebase Remote Config), anlık bildirimler (Firebase Cloud Messaging), analiz (Firebase Analytics) ve fotoğrafları yapay zeka işlemesine ileten sunucu işlevleri (Cloud Functions). Gizlilik politikası: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
+            <li><strong>Google AdMob (Google LLC)</strong> — İsteğe bağlı ödüllü video reklamlar ve onay formu (bkz. Bölüm 4). Gizlilik politikası: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
             <li><strong>Google ile Giriş (Google LLC)</strong> — İsteğe bağlı kimlik doğrulama yöntemi. Gizlilik politikası: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
             <li><strong>Apple Inc.</strong> — iOS'taki uygulama içi satın alımlar ve abonelikler App Store üzerinden Apple tarafından işlenir. Gizlilik politikası: <a href="https://www.apple.com/legal/privacy/" target="_blank">apple.com/legal/privacy</a></li>
             <li><strong>Google Play (Google LLC)</strong> — Android'deki uygulama içi satın alımlar ve abonelikler Google Play üzerinden Google tarafından işlenir. Gizlilik politikası: <a href="https://policies.google.com/privacy" target="_blank">policies.google.com/privacy</a></li>
@@ -228,7 +241,9 @@
         <h3>7.1 Erişim ve Kontrol</h3>
         <ul>
             <li><strong>Hesap Erişimi:</strong> Hesap bilgilerinizi istediğiniz zaman uygulamada görüntüleyip güncelleyebilirsiniz</li>
-            <li><strong>Veri Silme:</strong> Hesabınızı istediğiniz zaman uygulamadan silebilirsiniz (Profil &rarr; Hesabı Sil): hesabınız, profiliniz ve kaydettiğiniz sonuçlar silinir. Silme talebinizi pixip@pixip.tech adresine de iletebilirsiniz. Ayrıntılar: <a href="./delete-account.html#tr" style="color:#8B5CF6">Hesabını sil</a></li>
+            <li><strong>Veri Silme:</strong> Hesabınızı istediğiniz zaman uygulamadan silebilirsiniz (Profil &rarr; Hesabı Sil), misafir olarak da Google ile de: hesabınız, profiliniz ve kaydettiğiniz sonuçlar silinir. Silme talebinizi pixip@pixip.tech adresine de iletebilirsiniz. Ayrıntılar: <a href="./delete-account.html#tr" style="color:#8B5CF6">Hesabını sil</a></li>
+            <li><strong>Google ile giriş:</strong> Misafir hesabınız Google hesabınıza bağlanır ve kullanıcı kimliğini korur. O Google hesabında zaten Pici verisi varsa misafir hesabınızın kredileri, reklamla kazanılan düzenlemeleri, kaydedilen sonuçları ve son kullanılan araçları oraya taşınır; misafirken satın alınan plan da taşınır</li>
+            <li><strong>Reklam Tercihleri:</strong> Yasaların reklam için onay gerektirdiği yerlerde (örneğin AEA'da) seçiminizi istediğiniz zaman Profil &rarr; Reklam tercihleri bölümünden değiştirebilirsiniz</li>
             <li><strong>İzlemeyi Kapatma (iOS):</strong> ATT izleme iznini istediğiniz zaman iOS Ayarlar &gt; Gizlilik ve Güvenlik &gt; İzleme bölümünden değiştirebilirsiniz</li>
             <li><strong>Kişiselleştirilmiş Reklamları Kapatma (Android):</strong> Google Ayarları &gt; Reklamlar &gt; Reklam Kişiselleştirmeyi Devre Dışı Bırak</li>
             <li><strong>İletişimden Çıkma:</strong> Tanıtım e-postalarından, e-postadaki bağlantıyı kullanarak çıkabilirsiniz</li>
@@ -236,8 +251,9 @@
 
         <h3>7.2 Uygulama İzinleri</h3>
         <ul>
-            <li><strong>Kamera:</strong> Yapay zeka ile işlemek üzere fotoğraf çekmek için kameranıza erişim (isteğe bağlı; bunun yerine fotoğraf galerisini kullanabilirsiniz)</li>
-            <li><strong>Fotoğraf Galerisi:</strong> Yapay zeka ile işlemek üzere görsel seçmek için fotoğraf galerinize erişim</li>
+            <li><strong>Kamera:</strong> Yapay zeka ile işlemek üzere kamera uygulamanızla fotoğraf çekmek (isteğe bağlı; bunun yerine fotoğraf galerisini kullanabilirsiniz)</li>
+            <li><strong>Fotoğraflar:</strong> Son fotoğraflarınızı Ana Sayfa'da ve fotoğraf seçicide göstermek ve içinde insan olan fotoğrafları önermek (cihazınızda, Bölüm 1.3). Tüm fotoğraflara veya yalnızca seçtiğiniz fotoğraflara izin verebilir ya da hiç izin vermeden sistemin fotoğraf seçicisini kullanabilirsiniz</li>
+            <li><strong>Bildirimler (isteğe bağlı):</strong> Düzenlenmeye bıraktığınız fotoğraf hazır olduğunda haber vermek ve uygulama haberleri göndermek</li>
             <li><strong>İzleme (yalnızca iOS):</strong> Kişiselleştirilmiş reklamlar için reklam kimliğinize erişim (isteğe bağlı; ATT istemini reddedebilirsiniz)</li>
             <li><strong>İnternet:</strong> Yapay zeka işlemesi, kimlik doğrulama ve uygulamanın çalışması için gereklidir</li>
         </ul>
@@ -258,6 +274,8 @@
         <ul>
             <li><strong>Hesap Verileri:</strong> Hesabınız aktif olduğu sürece veya silinmesini talep edene kadar saklanır</li>
             <li><strong>Fotoğraflar:</strong> İşlendikten sonra sunucumuzda tutulmaz; Pici'ye kaydettiğiniz sonuçlar, siz onları veya hesabınızı silene kadar saklanır</li>
+            <li><strong>Misafir Hesapları:</strong> Misafir hesabı telefonunuzda yaşar. Google ile giriş yapmadan uygulamayı kaldırır veya verilerini temizlerseniz misafir hesabı geri getirilemez (abonelik yine de mağaza hesabınız üzerinden geri yüklenebilir); verileri siz silinmesini isteyene kadar saklanır</li>
+            <li><strong>Tamamlanmamış Düzenlemeler:</strong> 24 saat sonra otomatik olarak silinir</li>
             <li><strong>Analiz Verileri:</strong> Uygulamayı geliştirmek amacıyla en fazla 2 yıl saklanır</li>
             <li><strong>Yasal Gereklilikler:</strong> Yasaların gerektirdiği durumlarda bazı veriler daha uzun süre saklanabilir</li>
         </ul>
@@ -288,7 +306,7 @@
         <p>Bu Gizlilik Politikası, kanunlar ihtilafı kurallarına bakılmaksızın <strong>Türkiye</strong> Cumhuriyeti kanunlarına tabidir ve bu kanunlara göre yorumlanır.</p>
 
         <div class="last-updated">
-            <p><em>Bu Gizlilik Politikası en son 26 Ekim 2026 tarihinde güncellenmiştir</em></p>
+            <p><em>Bu Gizlilik Politikası en son 9 Kasım 2026 tarihinde güncellenmiştir</em></p>
             <p><strong>Pici AI - Photo Beautifier &amp; Style Transform</strong></p>
         </div>
     </div>
